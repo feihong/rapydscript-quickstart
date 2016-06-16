@@ -33,5 +33,13 @@ def change_greeting():
         .appendTo(p))
 
 
+def cause_trouble():
+    a = 1/0     # won't trigger an error in JS
+    print(a)    # Infinity
+
+    b = c + 1   # c doesn't exist
+
+
 change_greeting()
-$('button').on('click', change_greeting)
+$('button.change').on('click', change_greeting)
+$('button.error').on('click', cause_trouble)
