@@ -1,5 +1,6 @@
 import random
 
+
 GREETINGS = [
     'Hello World',
     'Hola Mundo',
@@ -25,6 +26,7 @@ def main():
     change_greeting()
     jq('button.change').on('click', change_greeting)
     jq('button.error').on('click', cause_trouble)
+    jq('button.debug').on('click', debug)
 
 
 def change_greeting():
@@ -47,6 +49,22 @@ def cause_trouble():
     print(a)    # Infinity
 
     b = c + 1   # c doesn't exist
+
+
+def debug():
+    chrs = []
+    for i in range(5):
+        chrs.append(chr(random.randint(945, 969)))
+
+    # Note that this is the JS array version of join().
+    result = chrs.join('')
+    print(result)
+
+    # You have to use literal JS to activate the debugger, because the compiler
+    # treats 'debugger' as a reserved keyword.
+    v'debugger'
+
+    jq('span.greeting').text(result)
 
 
 main()
