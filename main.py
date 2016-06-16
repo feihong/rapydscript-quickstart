@@ -18,14 +18,23 @@ COLORS = ('red pink purple deep-purple indigo blue light-blue cyan teal green '
     'light-green lime yellow amber orange deep-orange blue-grey').split(' ')
 
 
+jq = window.jQuery
+
+
+def main():
+    change_greeting()
+    jq('button.change').on('click', change_greeting)
+    jq('button.error').on('click', cause_trouble)
+
+
 def change_greeting():
-    p = $('#content')
+    p = jq('#content')
     p.empty()
 
     color = random.choice(COLORS)
     text_color = 'black' if color in ['lime', 'yellow', 'amber'] else 'white'
 
-    ($('<span class="greeting">')
+    (jq('<span class="greeting">')
         .text(random.choice(GREETINGS))
         .addClass('z-depth-1')
         .addClass(color)
@@ -40,6 +49,4 @@ def cause_trouble():
     b = c + 1   # c doesn't exist
 
 
-change_greeting()
-$('button.change').on('click', change_greeting)
-$('button.error').on('click', cause_trouble)
+main()
