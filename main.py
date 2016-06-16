@@ -56,9 +56,13 @@ def debug():
     for i in range(5):
         chrs.append(chr(random.randint(945, 969)))
 
-    # Note that this is the JS array version of join().
+    # Note that this is the Array.join() method.
     result = chrs.join('')
-    print(result)
+    print('Using JS join:', result)
+
+    # Pythonic string methods can be accessed via functions in the str module.
+    result2 = str.join('', chrs)
+    print('Using Python join:', result2)
 
     # You have to use literal JS to activate the debugger, because the compiler
     # treats 'debugger' as a reserved keyword.
