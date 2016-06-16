@@ -1,6 +1,6 @@
 import random
 
-greetings = [
+GREETINGS = [
     'Hello World',
     'Hola Mundo',
     'ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ ਦੁਨਿਆ',
@@ -14,12 +14,24 @@ greetings = [
     'გამარჯობა მსოფლიო',
 ]
 
-def get_random_greeting():
-    return random.choice(greetings)
-
-$('#content').text(get_random_greeting())
+COLORS = ('red pink purple deep-purple indigo blue light-blue cyan teal green '
+    'light-green lime yellow amber orange deep-orange blue-grey').split(' ')
 
 
-$('button').on('click', def():
-    $('#content').text(get_random_greeting())
-)
+def change_greeting():
+    p = $('#content')
+    p.empty()
+
+    color = random.choice(COLORS)
+    text_color = 'black' if color in ['lime', 'yellow', 'amber'] else 'white'
+
+    ($('<span class="greeting">')
+        .text(random.choice(GREETINGS))
+        .addClass('z-depth-1')
+        .addClass(color)
+        .addClass(text_color + '-text')
+        .appendTo(p))
+
+
+change_greeting()
+$('button').on('click', change_greeting)
