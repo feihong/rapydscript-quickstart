@@ -22,12 +22,17 @@ COLORS = ('red pink purple deep-purple indigo blue light-blue cyan teal green '
 jq = window.jQuery
 
 
+@external
+class Promise: pass
+
+
 def main():
     change_greeting()
     jq('button.change').on('click', change_greeting)
     jq('button.error').on('click', cause_trouble)
     jq('button.debug').on('click', debug)
     jq('button.generator').on('click', generator_function)
+    jq('button.promise').on('click', promise)
 
 
 def change_greeting():
@@ -79,6 +84,22 @@ def generator_function():
 
     gen = func(random.randint(4, 11), random.randint(12, 20))
     jq('span.greeting').text(str.join(', ', gen))
+
+
+def sleep(delay):
+    def fn(resolve, reject):
+        window.setTimeout(resolve, delay * 1000)
+    return Promise(fn)
+
+
+def promise():
+    sleep(1).then(def():
+        jq('span.greeting').text('1 second later')
+    )
+    sleep(2).then(def():
+        jq('span.greeting').text('2 seconds later')
+    )
+
 
 
 main()
