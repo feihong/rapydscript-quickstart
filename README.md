@@ -22,6 +22,12 @@ Output to file:
 rapyidscript -o main.js main.py
 ```
 
+Output to ES6 instead of ES5 JavaScript:
+
+```
+rapydscript -o main.js -j 6 main.py
+```
+
 See compilation options:
 
 ```

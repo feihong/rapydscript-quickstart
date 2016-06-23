@@ -27,6 +27,7 @@ def main():
     jq('button.change').on('click', change_greeting)
     jq('button.error').on('click', cause_trouble)
     jq('button.debug').on('click', debug)
+    jq('button.generator').on('click', generator_function)
 
 
 def change_greeting():
@@ -69,6 +70,15 @@ def debug():
     v'debugger'
 
     jq('span.greeting').text(result)
+
+
+def generator_function():
+    def func(start, end):
+        for i in range(start, end):
+            yield i*2 + 1
+
+    gen = func(random.randint(4, 11), random.randint(12, 20))
+    jq('span.greeting').text(str.join(', ', gen))
 
 
 main()
