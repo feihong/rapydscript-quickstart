@@ -79,17 +79,26 @@ def debug():
     jq('span.greeting').text(result)
 
 
+
+class Test:
+    def problems_with_this_method(self):
+        # Generated code will not use the new keyword to instantiate Robot,
+        # which results in runtime error.
+        robot = Robot('Susie')
+        robot.shoot_laser(33)
+
+
 class Robot:
     def __init__(self, name):
         self.name = name
 
     def shoot_laser(self, times):
         for i in range(times):
-            print(str.format('Shoot laser ({})', i))
+            print(str.format('{} shoots laser ({})', self.name, i))
 
 
 def klass():
-    robot = Robot()
+    robot = Robot('Robbie')
     robot.shoot_laser(3)
 
 
