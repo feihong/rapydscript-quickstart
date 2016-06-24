@@ -33,6 +33,7 @@ def main():
     jq('button.debug').on('click', debug)
     jq('button.generator').on('click', generator_function)
     jq('button.promise').on('click', promise)
+    jq('button.co').on('click', generator_control_flow)
 
 
 def change_greeting():
@@ -100,6 +101,14 @@ def promise():
         jq('span.greeting').text('2 seconds later')
     )
 
+
+def generator_control_flow():
+    co(def():
+        words = ['eenie', 'meenie', 'minie', 'mo']
+        for word in words:
+            jq('span.greeting').text(word)
+            yield sleep(1)
+    )
 
 
 main()
