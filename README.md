@@ -19,7 +19,7 @@ rapydscript main.py
 Output to file:
 
 ```
-rapyidscript -o main.js main.py
+rapydscript -o main.js main.py
 ```
 
 Output to ES6 instead of ES5 JavaScript:

@@ -31,6 +31,7 @@ def main():
     jq('button.change').on('click', change_greeting)
     jq('button.error').on('click', cause_trouble)
     jq('button.debug').on('click', debug)
+    jq('button.klass').on('click', klass)
     jq('button.generator').on('click', generator_function)
     jq('button.promise').on('click', promise)
     jq('button.co').on('click', generator_control_flow)
@@ -43,12 +44,12 @@ def change_greeting():
     color = random.choice(COLORS)
     text_color = 'black' if color in ['lime', 'yellow', 'amber'] else 'white'
 
-    (jq('<span class="greeting">')
-        .text(random.choice(GREETINGS))
-        .addClass('z-depth-1')
-        .addClass(color)
-        .addClass(text_color + '-text')
-        .appendTo(p))
+    jq('<span class="greeting">')
+    .text(random.choice(GREETINGS))
+    .addClass('z-depth-1')
+    .addClass(color)
+    .addClass(text_color + '-text')
+    .appendTo(p)
 
 
 def cause_trouble():
@@ -76,6 +77,20 @@ def debug():
     v'debugger'
 
     jq('span.greeting').text(result)
+
+
+class Robot:
+    def __init__(self, name):
+        self.name = name
+
+    def shoot_laser(self, times):
+        for i in range(times):
+            print(str.format('Shoot laser ({})', i))
+
+
+def klass():
+    robot = Robot()
+    robot.shoot_laser(3)
 
 
 def generator_function():
