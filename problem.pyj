@@ -1,0 +1,13 @@
+"""
+This program demonstrates an issue with the compiler. In the generated
+JavaScript, there is no new in front of Robot(). If you put the function after
+the class definition, it works.
+
+"""
+
+def oh_no():
+    robot = Robot()
+
+
+class Robot:
+    pass
