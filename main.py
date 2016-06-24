@@ -80,12 +80,11 @@ def debug():
 
 
 
-class Test:
-    def problems_with_this_method(self):
-        # Generated code will not use the new keyword to instantiate Robot,
-        # which results in runtime error.
-        robot = Robot('Susie')
-        robot.shoot_laser(33)
+def problems_with_this_function():
+    # Generated code will not use the new keyword to instantiate Robot,
+    # which results in runtime error.
+    robot = Robot('Susie')
+    robot.shoot_laser(33)
 
 
 class Robot:
